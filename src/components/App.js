@@ -28,13 +28,12 @@ export default class App extends Component {
     }));
   };
 
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // deletContact = id => {
-  //   this.setState(state => ({
-  //      contacts: state.contacts.filter(contact => contact.id !==id)
-  //   }))
-  // }
-  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  deleteContact = id => {
+    this.setState(state => ({
+       contacts: state.contacts.filter(contact => contact.id !==id)
+    }))
+  }
+ 
 
   render() {
     return (
@@ -44,7 +43,7 @@ export default class App extends Component {
 
         <h2 className={styles.headerPhone}>Contacts</h2>
         {/* <Filter ... /> */}
-        <ContactList contacts={this.state.contacts} />
+        <ContactList contacts={this.state.contacts} onItemDeleted={this.deleteContact}/>
       </div>
     );
   }
