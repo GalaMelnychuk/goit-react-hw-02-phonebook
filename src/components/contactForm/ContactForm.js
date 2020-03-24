@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import styles from "./ContactForm.module.css";
+import PropTypes from 'prop-types';
 // import shortid from 'shortid';
 
 
@@ -48,7 +49,9 @@ export default class ContactForm extends Component {
               className={styles.inputForm}
               onChange={this.handlerChangeInput}
               type="text"
+              required pattern="^[A-Za-zА-Яа-яЁё\s]+$"
               name="name"
+              placeholder="Please, enter Contact's Name and Last Name"
               value={name}
             ></input>
           </label>
@@ -58,6 +61,8 @@ export default class ContactForm extends Component {
             onChange={this.handlerChangeInput}
             type="text"
             name="number"
+            placeholder="xxx-xxx-xxx"
+            required pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}"
             value={number}
           ></input>
           <button className={styles.buttonForm} type="submit">Add contact</button>
@@ -66,3 +71,8 @@ export default class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  name: PropTypes.string,
+  number: PropTypes.string
+};
